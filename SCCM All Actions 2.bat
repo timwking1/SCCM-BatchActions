@@ -10,20 +10,14 @@ rem Define the strings that will be echoed at different points in this script...
 set WELCOME_MESSAGE=Tim's Magic SCCM Actions Script
 set START_MESSAGE=Running SCCM Actions...
 set EXIT_MESSAGE=SCCM Actions finished, starting Group Policy Update. It is now safe to remove USB.
-set MESSAGE=Triggered
-
-set TOTAL_COMMANDS=11
-set PERCENTAGE_PER_COMMAND=100
+set TRIGGER_MESSAGE=Triggered
 
 rem Define the array of strings containing the names of the SCCM Actions
 set "COMMAND[0]=Machine Policy Assignments Request"
 set "COMMAND[1]=Machine Policy Evaluation"
 set "COMMAND[2]=Data Discovery Record"
-rem set "COMMAND[3]=Discovery Data Collection Cycle"
 set "COMMAND[4]=Software Inventory"
-rem set "COMMAND[5]=Software Inventory Collection Cycle"
 set "COMMAND[6]=Hardware Inventory"
-rem set "COMMAND[7]=Hardware Inventory Collection Cycle"
 set "COMMAND[8]=Scan by Update Source"
 set "COMMAND[9]=Update Store Policy"
 set "COMMAND[10]=Software Metering Generating Usage Report"
@@ -37,47 +31,47 @@ echo %START_MESSAGE%
   call :progressbar 0
 
   WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000021}" /NOINTERACTIVE >nul
-  echo %MESSAGE% !COMMAND[0]!
+  echo %TRIGGER_MESSAGE% !COMMAND[0]!
   call :progressbar 9
 
   WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000022}" /NOINTERACTIVE >nul
-  echo %MESSAGE% !COMMAND[1]!
+  echo %TRIGGER_MESSAGE% !COMMAND[1]!
   call :progressbar 18
 
   WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000003}" /NOINTERACTIVE >nul
-  echo %MESSAGE% !COMMAND[2]!
+  echo %TRIGGER_MESSAGE% !COMMAND[2]!
   call :progressbar 27
 
   WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000002}" /NOINTERACTIVE >nul
-  echo %MESSAGE% !COMMAND[4]!
+  echo %TRIGGER_MESSAGE% !COMMAND[4]!
   call :progressbar 36
 
   WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000001}" /NOINTERACTIVE >nul
-  echo %MESSAGE% !COMMAND[6]!
+  echo %TRIGGER_MESSAGE% !COMMAND[6]!
   call :progressbar 45
 
   WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000113}" /NOINTERACTIVE >nul
-  echo %MESSAGE% !COMMAND[8]!
+  echo %TRIGGER_MESSAGE% !COMMAND[8]!
   call :progressbar 54
 
   WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000114}" /NOINTERACTIVE >nul
-  echo %MESSAGE% !COMMAND[9]!
+  echo %TRIGGER_MESSAGE% !COMMAND[9]!
   call :progressbar 63
 
   WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000031}" /NOINTERACTIVE >nul
-  echo %MESSAGE% !COMMAND[10]!
+  echo %TRIGGER_MESSAGE% !COMMAND[10]!
   call :progressbar 72
 
   WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000121}" /NOINTERACTIVE >nul
-  echo %MESSAGE% !COMMAND[11]!
+  echo %TRIGGER_MESSAGE% !COMMAND[11]!
   call :progressbar 81
 
   WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000032}" /NOINTERACTIVE >nul
-  echo %MESSAGE% !COMMAND[12]!
+  echo %TRIGGER_MESSAGE% !COMMAND[12]!
   call :progressbar 91
 
   WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-0000-0000-000000000010}" /NOINTERACTIVE >nul
-  echo %MESSAGE% !COMMAND[13]!
+  echo %TRIGGER_MESSAGE% !COMMAND[13]!
   call :progressbar 100
 )
 
